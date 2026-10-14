@@ -22,7 +22,7 @@ model Book {
   language      String?
   pageCount     Int?
   price         Decimal  @db.Decimal(10, 2)
-  coverImageUrl String?
+  coverImageUrl String
   stock         Int      @default(0)
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
