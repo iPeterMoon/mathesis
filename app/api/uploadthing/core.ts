@@ -1,5 +1,6 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
+import { getSession } from "@/lib/auth/session";
 
 const f = createUploadthing();
 
@@ -12,16 +13,13 @@ export const ourFileRouter = {
       maxFileCount: 1,
     },
   })
-    .middleware(async ({ req }) => {
-      // This code runs on your server before upload
-      //TODO: AUTHENTICATION
-      //const user = await auth(req);
-
-      // If you throw, the user will not be able to upload
-      //if (!user) throw new UploadThingError("Unauthorized");
+    .middleware(async () => {
+      // Solo un admin con sesión puede subir portadas
+      const session = await getSession();
+      if (!session) throw new UploadThingError("Unauthorized");
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return {};
+      return { userId: session.userId };
     })
     .onUploadComplete(async ({ file }) => {
       console.log("Portada subida", file.ufsUrl);
