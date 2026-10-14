@@ -29,6 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## WhatsApp
+
+Configura el número de la tienda en `.env.local` para habilitar el botón de
+pedido por WhatsApp. Usa el formato internacional, con o sin el prefijo `+`:
+
+```bash
+NEXT_PUBLIC_WHATSAPP_PHONE=525512345678
+```
+
+El botón construye el mensaje con los productos, cantidades, subtotales y total
+del carrito, y abre el enlace `wa.me` en una pestaña nueva.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
