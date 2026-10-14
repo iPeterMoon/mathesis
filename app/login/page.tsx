@@ -1,20 +1,8 @@
 "use client";
 
-import { Bebas_Neue, Montserrat } from "next/font/google";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: "400",
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: "200",
-});
+import { bebasNeue, montserrat } from "@/lib/fonts/fonts";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -43,7 +31,7 @@ export default function AdminLoginPage() {
         return;
       }
       // Handle successful login
-      router.push("/admin/dashboard");
+      router.push("/admin/");
     } catch (error) {
       setError("Error de conexión, intenta de nuevo");
       console.log(error);

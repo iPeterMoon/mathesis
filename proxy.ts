@@ -4,7 +4,7 @@ import { getSession } from '@/lib/auth/session'
 
 export async function proxy(request: NextRequest) {
     if (!(await getSession())) {
-        return NextResponse.redirect(new URL('/admin/login', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 }
 
